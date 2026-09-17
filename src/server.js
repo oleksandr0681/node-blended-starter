@@ -8,6 +8,7 @@ import notFoundHandler from './middleware/notFoundHandler.js';
 import logger from './middleware/logger.js';
 import helmet from 'helmet';
 import productRouts from './routes/productsRoutes.js';
+import { errors } from 'celebrate';
 
 const app = express();
 const PORT = process.env.PORT ?? 3030;
@@ -20,6 +21,7 @@ app.use(helmet());
 app.use(productRouts);
 
 app.use(notFoundHandler);
+app.use(errors());
 app.use(errorHandler);
 
 await connectMongoDB();
