@@ -1,3 +1,3 @@
 export default function notFoundHandler(request, response) {
-  response.status(404).json({ messate: 'Route not found.' });
+  response.status(404).json({ message: 'Route not found.' });
 }
