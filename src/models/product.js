@@ -21,11 +21,18 @@ const productSchema = new Schema(
       default: '',
       trim: true,
     },
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
     versionKey: false,
   },
 );
+
+productSchema.index({ category: 1, userId: 1});
 
 export const Product = model('Product', productSchema);

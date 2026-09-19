@@ -13,9 +13,11 @@ import {
   createProductSchema,
   updateProductSchema,
 } from '../validations/productsValidation.js';
+import { authenticate } from '../middleware/authenticate.js';
 
 const router = Router();
 
+router.use('/products', authenticate);
 router.get('/products', celebrate(getAllProductsSchema), getAllProducts);
 router.get('/products/:productId', celebrate(productIdSchema), getProductById);
 router.post('/products', celebrate(createProductSchema), createProduct);
